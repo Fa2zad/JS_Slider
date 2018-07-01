@@ -1,0 +1,45 @@
+//$debug: true; // TODO: move to _settings.scss
+
+//$debugGlobal: $debug; // body, header, main, footer
+//$debugDivisions: $debug; // section, article, div
+//$debugInners: $debug;
+
+@mixin debug($debugGlobal: false, $debugDivisions: false, $debugInners: false){
+    body,  {
+        @if ($debugGlobal) { // visualizing layout internals
+            border: 1px solid rgba(0, 0, 255,.75);
+            header, main, footer{
+                @if ($debugGlobal) { // visualizing layout internals
+                    border: 1px dashed rgba(255, 0, 0,.75);
+                }
+            }
+            @content
+        }
+    }
+    
+    section, article, aside, div {
+        @if ($debugDivisions) { // visualizing layout internals
+            border: 1px dotted rgba(0, 0, 255,.75);
+            
+
+            >section, >div{
+                @if ($debugDivisions) { // visualizing layout internals
+                    border: 1px solid rgba(255, 0, 0,.75);
+                    >section, >div{
+                        @if ($debugDivisions) { // visualizing layout internals
+                            border: 1px dashed rgba(0, 0, 255,.75);
+                        }
+                    }
+                }
+            }
+        }
+        
+    }
+    h1, h2, h3, h4, h5, h6, p, ul, ol, li, a, span, img  {
+        @if ($debugInners) { // visualizing layout internals
+            border: 1px dotted rgba(0, 80, 0, 0.75);
+            @content
+        }
+    }
+
+}

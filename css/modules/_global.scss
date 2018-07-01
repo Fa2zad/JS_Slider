@@ -1,0 +1,14 @@
+// File Name: _golbal.scss
+// Description: global styles
+// Used by: Page.scss
+// Dependencies:
+// ------------------------------------------------------------
+body{
+    
+    background: black;
+
+}
+main{
+    max-width: 70%;
+    @extend %marginAuto;
+}
